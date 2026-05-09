@@ -155,7 +155,9 @@ nav a:active {
 }
 
 .main-logo {
-    alt: "CSE 340 Service Network Logo"; /* Ensure alt text is present */
+    display: block;
+    margin: 2rem auto;
+    max-width: 100%;
 }
 
 /* High contrast mode support */
