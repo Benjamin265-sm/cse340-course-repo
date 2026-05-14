@@ -1,6 +1,12 @@
 import express from 'express';
 import { fileURLToPath } from 'url';
 import path from 'path';
+import { testConnection } from './src/models/db.js';
+import { getAllOrganisations } from './src/models/organisations.js';
+import { getAllProjects } from './src/models/projects.js';
+
+
+
 
 // Define the the application environment
 const NODE_ENV = process.env.NODE_ENV?.toLowerCase() || 'production';
@@ -64,14 +70,22 @@ app.get('/', async (req, res) => {
     res.render('home', { title });
 });
 
-app.get('/organizations', async (req, res) => {
-    const title = 'Our Partner Organizations';
-    res.render('organizations', { title });
+app.get('/organisations', async (req, res) => {
+    const organisations = await getAllOrganisations();
+    console.log(organisations);
+      
+    const title = 'Our Partner Organisations';
+    res.render('organisations', { title, organisations });
 });
 
 app.get('/projects', async (req, res) => {
+    const projects = await getAllProjects();
     const title = 'Service Projects';
-    res.render('projects', { title });
+    
+    // Log projects to console to verify it's working
+    console.log('Retrieved projects:', projects);
+    
+    res.render('projects', { title, projects });
 });
 
 app.get('/categories', async (req, res) => {
@@ -85,7 +99,22 @@ app.get('/', (req, res) => {
   res.send('Hello from Express!');
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running at http://127.0.0.1:${PORT}`);
-  console.log(`Environment: ${NODE_ENV}`);
+// app.listen(PORT, () => {
+//   console.log(`Server is running at http://127.0.0.1:${PORT}`);
+//   console.log(`Environment: ${NODE_ENV}`);
+// });
+
+app.listen(PORT, async () => {
+  try {
+    await testConnection();
+    console.log(`Server is running at http://127.0.0.1:${PORT}`);
+    console.log(`Environment: ${NODE_ENV}`);
+    
+    // Test the getAllProjects function on startup
+    const testProjects = await getAllProjects();
+    console.log('Test - Retrieved projects on startup:', testProjects.length, 'projects found');
+
+  } catch (error) {
+    console.error('Error connecting to the database:', error);
+  }
 });

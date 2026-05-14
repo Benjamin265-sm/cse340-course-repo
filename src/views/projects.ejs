@@ -1,12 +1,25 @@
 <%- include('partials/header') %>
-    <main>
-        <h1><%= title %></h1>
-       
-<h2>Upcoming Service Projects</h2>
-<ul>
-    <li>Park Cleanup - Join us to clean up local parks and make them beautiful!</li>
-    <li>Food Drive - Help collect and distribute food to those in need.</li>
-    <li>Community Tutoring - Volunteer to tutor students in various subjects.</li>
-</ul>
-    </main>
-<%- include('partials/footer')  %>
+<main>
+    <h1><%= title %></h1>
+    <h2>Upcoming Service Projects</h2>
+    
+    <% if (projects && projects.length > 0) { %>
+        <ul>
+            <% projects.forEach(project => { %>
+                <li>
+                    <%= new Date(project.date).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) %>: 
+                    <%= project.title %> 
+                    (<%= project.organisation_name %>)
+                </li>
+            <% }); %>
+        </ul>
+    <% } else { %>
+        <ul>
+            <li>Park Cleanup - Join us to clean up local parks and make them beautiful!</li>
+            <li>Food Drive - Help collect and distribute food to those in need.</li>
+            <li>Community Tutoring - Volunteer to tutor students in various subjects.</li>
+        </ul>
+        <p><em>More projects coming soon!</em></p>
+    <% } %>
+</main>
+<%- include('partials/footer') %>
