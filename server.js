@@ -3,7 +3,6 @@ import { fileURLToPath } from 'url';
 import path from 'path';
 import { testConnection } from './src/models/db.js';
 import { getAllOrganisations } from './src/models/organisations.js';
-import { getAllProjects } from './src/models/projects.js';
 
 
 
@@ -79,18 +78,19 @@ app.get('/organisations', async (req, res) => {
 });
 
 app.get('/projects', async (req, res) => {
-    const projects = await getAllProjects();
     const title = 'Service Projects';
-    
-    // Log projects to console to verify it's working
-    console.log('Retrieved projects:', projects);
-    
-    res.render('projects', { title, projects });
+    res.render('projects', { title });
 });
 
 app.get('/categories', async (req, res) => {
     const title = 'Service Categories';
     res.render('categories', { title });
+});
+
+////
+
+app.get('/', (req, res) => {
+  res.send('Hello from Express!');
 });
 
 // app.listen(PORT, () => {
@@ -103,11 +103,6 @@ app.listen(PORT, async () => {
     await testConnection();
     console.log(`Server is running at http://127.0.0.1:${PORT}`);
     console.log(`Environment: ${NODE_ENV}`);
-    
-    // Test the getAllProjects function on startup
-    const testProjects = await getAllProjects();
-    console.log('Test - Retrieved projects on startup:', testProjects.length, 'projects found');
-
   } catch (error) {
     console.error('Error connecting to the database:', error);
   }
