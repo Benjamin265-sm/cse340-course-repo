@@ -69,7 +69,7 @@ app.get('/', async (req, res) => {
     res.render('home', { title });
 });
 
-app.get('/organisations', async (req, res) => {
+app.get('/organizations', async (req, res) => {
     const organisations = await getAllOrganisations();
     console.log(organisations);
       
@@ -89,14 +89,6 @@ app.get('/categories', async (req, res) => {
 
 ////
 
-app.get('/', (req, res) => {
-  res.send('Hello from Express!');
-});
-
-// app.listen(PORT, () => {
-//   console.log(`Server is running at http://127.0.0.1:${PORT}`);
-//   console.log(`Environment: ${NODE_ENV}`);
-// });
 
 app.listen(PORT, async () => {
   try {
