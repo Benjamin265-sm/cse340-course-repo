@@ -3,6 +3,7 @@ import { fileURLToPath } from 'url';
 import path from 'path';
 import { testConnection } from './src/models/db.js';
 import { getAllOrganisations } from './src/models/organisations.js';
+import getAllProjects from './src/models/projects.js';
 
 
 
@@ -69,17 +70,17 @@ app.get('/', async (req, res) => {
     res.render('home', { title });
 });
 
-app.get('/organisations', async (req, res) => {
-    const organisations = await getAllOrganisations();
-    console.log(organisations);
-      
-    const title = 'Our Partner Organisations';
-    res.render('organisations', { title });
+app.get('/organizations', async (req, res) => {
+    const organizations = await getAllOrganizations();
+    const title = 'Our Partner Organizations';
+
+    res.render('organizations', { title, organizations });
 });
 
 app.get('/projects', async (req, res) => {
     const title = 'Service Projects';
-    res.render('projects', { title });
+    const projects = await getAllProjects();
+    res.render('projects', { title, projects });
 });
 
 app.get('/categories', async (req, res) => {
@@ -93,6 +94,10 @@ app.get('/categories', async (req, res) => {
 app.listen(PORT, async () => {
   try {
     await testConnection();
+
+    const projects = await getAllProjects();
+    console.log('Loaded projects:', projects);
+
     console.log(`Server is running at http://127.0.0.1:${PORT}`);
     console.log(`Environment: ${NODE_ENV}`);
   } catch (error) {
