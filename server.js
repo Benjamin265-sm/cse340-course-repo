@@ -69,12 +69,12 @@ app.get('/', async (req, res) => {
     res.render('home', { title });
 });
 
-app.get('/organizations', async (req, res) => {
+app.get('/organisations', async (req, res) => {
     const organisations = await getAllOrganisations();
     console.log(organisations);
       
     const title = 'Our Partner Organisations';
-    res.render('organisations', { title, organisations });
+    res.render('organisations', { title });
 });
 
 app.get('/projects', async (req, res) => {
@@ -87,7 +87,7 @@ app.get('/categories', async (req, res) => {
     res.render('categories', { title });
 });
 
-////
+
 
 
 app.listen(PORT, async () => {
