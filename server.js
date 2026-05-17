@@ -4,6 +4,8 @@ import path from 'path';
 import { testConnection } from './src/models/db.js';
 import { getAllOrganisations } from './src/models/organisations.js';
 import getAllProjects from './src/models/projects.js';
+import { getAllCategories } from './src/models/categories.js';
+
 
 
 
@@ -71,8 +73,9 @@ app.get('/', async (req, res) => {
 });
 
 app.get('/organisations', async (req, res) => {
-    const organisations = await getAllOrganisations();
+    // const organisations = await getAllOrganisations();
     const title = 'Our Partner Organisations';
+    let organisations = [];
 
     res.render('organisations', { title, organisations });
 });
@@ -93,7 +96,15 @@ app.get('/projects', async (req, res) => {
 
 app.get('/categories', async (req, res) => {
     const title = 'Service Categories';
-    res.render('categories', { title });
+    let categories = [];
+
+    try {
+        categories = await getAllCategories();
+    } catch (error) {
+        console.error('Failed to load categories:', error);
+    }
+
+    res.render('categories', { title, categories });
 });
 
 

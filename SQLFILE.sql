@@ -32,7 +32,9 @@ CREATE TABLE service_project (
 		REFERENCES organisation(organisation_id)
 		ON DELETE CASCADE
 		
+		
 );
+
 
 -- Projects for BrightFuture Builders (organization_id = 1)
 INSERT INTO service_project (organisation_id, title, description, location, date) VALUES
@@ -61,4 +63,18 @@ INSERT INTO service_project (organisation_id, title, description, location, date
 -- ========================================
 -- Verify data insertion
 -- ========================================
-SELECT * FROM service_project;
+CREATE TABLE category (
+    category_id SERIAL PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    description TEXT NOT NULL
+);
+
+INSERT INTO categories (name, description)
+VALUES
+('Environmental', 'Projects focused on environmental conservation and sustainability'),
+('Educational', 'Projects supporting education and learning initiatives'),
+('Community Service', 'General community support and volunteer service projects'),
+('Infrastructure', 'Projects involving construction and infrastructure improvements'),
+('Health and Wellness', 'Projects promoting health, wellness, and wellbeing');
+
+SELECT * FROM categories;
