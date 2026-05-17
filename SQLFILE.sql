@@ -35,7 +35,7 @@ CREATE TABLE service_project (
 );
 
 -- Projects for BrightFuture Builders (organization_id = 1)
-INSERT INTO service_project (organization_id, title, description, location, date) VALUES
+INSERT INTO service_project (organisation_id, title, description, location, date) VALUES
 (1, 'Community Playground Renovation', 'Volunteers will repair and repaint playground equipment, install new safety surfacing, and add accessible swings for children with disabilities.', 'Oakwood Community Park, 4500 Parkview Drive', '2026-06-15'),
 (1, 'Senior Center Accessibility Ramp', 'Building wheelchair ramps and handrails for the downtown senior community center to improve accessibility for elderly residents.', 'Downtown Senior Center, 215 Elder Street', '2026-07-22'),
 (1, 'Neighborhood Sidewalk Repair', 'Fixing cracked and uneven sidewalks in the Westside neighborhood to improve pedestrian safety and walkability.', 'Westside Neighborhood, Main Street Corridor', '2026-08-10'),
@@ -43,7 +43,7 @@ INSERT INTO service_project (organization_id, title, description, location, date
 (1, 'Habitat Home Build Day', 'Partnering with Habitat for Humanity to frame and roof a new affordable home for a local family in need.', '123 Hope Avenue, Riverside District', '2026-10-12');
 
 -- Projects for GreenHarvest Growers (organization_id = 2)
-INSERT INTO service_project (organization_id, title, description, location, date) VALUES
+INSERT INTO service_project (organisation_id, title, description, location, date) VALUES
 (2, 'Spring Community Garden Planting', 'Annual spring planting event where volunteers help prepare soil beds, plant vegetables, and set up irrigation systems for the community garden.', 'Sunrise Community Garden, 780 Green Valley Road', '2026-04-20'),
 (2, 'Farmers Market Setup and Support', 'Assisting with the weekly farmers market setup, including vendor booth arrangement, signage placement, and customer information booth.', 'Downtown Plaza, 150 Market Square', '2026-05-30'),
 (2, 'Food Bank Harvest Collection', 'Organizing a neighborhood harvest collection drive to gather fresh produce from local gardens for donation to the city food bank.', 'Various Locations - Central Collection at 340 Harvest Lane', '2026-07-15'),
@@ -51,7 +51,7 @@ INSERT INTO service_project (organization_id, title, description, location, date
 (2, 'School Nutrition Garden Installation', 'Installing raised garden beds and teaching students about growing their own food at Jefferson Middle School.', 'Jefferson Middle School, 234 Education Boulevard', '2026-09-18');
 
 -- Projects for UnityServe Volunteers (organization_id = 3)
-INSERT INTO service_project (organization_id, title, description, location, date) VALUES
+INSERT INTO service_project (organisation_id, title, description, location, date) VALUES
 (3, 'Annual River Cleanup Day', 'Mobilizing 200+ volunteers to remove trash and debris from the Riverside Park area and adjacent waterways.', 'Riverside Park, 890 River Road', '2026-05-10'),
 (3, 'Homeless Shelter Meal Service', 'Preparing and serving hot meals at the Hope Haven homeless shelter, with volunteers working in shifts throughout the day.', 'Hope Haven Shelter, 412 Compassion Way', '2026-06-28'),
 (3, 'Back-to-School Supply Drive', 'Collecting, sorting, and distributing backpacks and school supplies to underprivileged students in the community.', 'UnityServe Community Center, 123 Volunteer Avenue', '2026-08-05'),
