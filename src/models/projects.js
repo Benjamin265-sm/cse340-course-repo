@@ -12,7 +12,8 @@ const getAllProjects = async () => {
             o.name AS organization_name
         FROM public.service_project AS sp
         INNER JOIN public.organisation AS o
-            ON sp.organisation_id = o.organisation_id;
+            ON sp.organisation_id = o.organisation_id
+        ORDER BY sp.date;
     `;
     
     const results = await db.query(query);

@@ -70,16 +70,24 @@ app.get('/', async (req, res) => {
     res.render('home', { title });
 });
 
-app.get('/organizations', async (req, res) => {
-    const organizations = await getAllOrganizations();
-    const title = 'Our Partner Organizations';
+app.get('/organisations', async (req, res) => {
+    const organisations = await getAllOrganisations();
+    const title = 'Our Partner Organisations';
 
-    res.render('organizations', { title, organizations });
+    res.render('organisations', { title, organisations });
 });
 
 app.get('/projects', async (req, res) => {
     const title = 'Service Projects';
-    const projects = await getAllProjects();
+    let projects = [];
+
+    try {
+        projects = await getAllProjects();
+        console.log('Retrieved projects:', projects);
+    } catch (error) {
+        console.error('Failed to load service projects:', error);
+    }
+
     res.render('projects', { title, projects });
 });
 
